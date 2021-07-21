@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 10:42:18 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 19:38:10 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/21 21:59:36 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,21 @@ int	quit(void *d)
 
 static void	scroll(t_data *data, FLOAT coeff, int x, int y)
 {
-	t_complex	m;
 	t_complex	old_m;
-	int			out;
+	FLOAT		old_range;
+	FLOAT		range;
+	FLOAT		ratio_r;
+	FLOAT		ratio_i;
 
 	old_m = get_complex(data->frame, x, y);
-	m = old_m;
-	m.r *= coeff;
-	m.i *= coeff;
-	out = (coeff > 1);
-	data->frame.r_min = (data->frame.r_min + old_m.r) * coeff - old_m.r * out;
-	data->frame.i_min = (data->frame.i_min + old_m.i) * coeff - old_m.i * out;
-	data->frame.r_max = (data->frame.r_max + old_m.r) * coeff - old_m.r * out;
-	data->frame.i_max = (data->frame.i_max + old_m.i) * coeff - old_m.i * out;
-	printf("frame (coeff = %.3lf): min = %.3lf + %.3lfi, max = %.3lf + %.3lfi\n",
-		coeff,
-		data->frame.r_min, data->frame.i_min,
-		data->frame.r_max, data->frame.i_max);
+	old_range = data->frame.r_max - data->frame.r_min;
+	range = old_range * coeff;
+	ratio_r = (old_m.r - data->frame.r_min) / old_range;
+	ratio_i = (old_m.i - data->frame.i_min) / old_range;
+	data->frame.r_min = old_m.r - range * ratio_r;
+	data->frame.i_min = old_m.i - range * ratio_i;
+	data->frame.r_max = data->frame.r_min + range;
+	data->frame.i_max = data->frame.i_min + range;
 	data->zoom *= coeff;
 }
 

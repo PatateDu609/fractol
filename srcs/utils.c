@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 02:42:09 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 04:04:04 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/21 22:03:41 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ t_complex	get_complex(t_frame frame, uint16_t x, uint16_t y)
 	return (z);
 }
 
-// static FLOAT cubic_interpolation(FLOAT p[4], FLOAT x)
-// {
-// 	return (p[1] +
-// 			0.5 * x * (p[2] - p[0] +
-// 			x * (2.0 * p[0] - 5.0 * p[1] + 4.0 * p[2] - p[3] +
-// 			x * (3.0 * (p[1] - p[2]) + p[3] - p[0]))));
-// }
+static FLOAT cubic_interpolation(FLOAT p[4], FLOAT x)
+{
+	return (p[1] +
+			0.5 * x * (p[2] - p[0] +
+			x * (2.0 * p[0] - 5.0 * p[1] + 4.0 * p[2] - p[3] +
+			x * (3.0 * (p[1] - p[2]) + p[3] - p[0]))));
+}
 
 static t_pixel	interpolate_color(FLOAT t, t_pixel min, t_pixel max)
 {
