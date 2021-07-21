@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 03:03:33 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 02:03:29 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/21 17:41:54 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void init_hook(t_data *data)
 	mlx_loop_hook(data->mlx, fractol_hook, data);
 }
 
-static void init_frame(t_frame *frame)
+void init_frame(t_frame *frame)
 {
 	frame->r_min = -2;
 	frame->i_min = -2;

@@ -6,33 +6,41 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 10:42:18 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 04:15:49 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/21 19:38:10 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int				quit(void *d)
+int	quit(void *d)
 {
 	free_data((t_data *)d);
 	exit(0);
 }
 
-static void		scroll(t_data *data, FLOAT coeff, int x, int y)
+static void	scroll(t_data *data, FLOAT coeff, int x, int y)
 {
 	t_complex	m;
+	t_complex	old_m;
+	int			out;
 
-	m = get_complex(data->frame, x, y);
-	m.i *= coeff;
+	old_m = get_complex(data->frame, x, y);
+	m = old_m;
 	m.r *= coeff;
-	data->frame.r_min = data->frame.r_min * coeff + m.r;
-	data->frame.i_min = data->frame.i_min * coeff + m.i;
-	data->frame.r_max = data->frame.r_max * coeff + m.r;
-	data->frame.i_max = data->frame.i_max * coeff + m.i;
+	m.i *= coeff;
+	out = (coeff > 1);
+	data->frame.r_min = (data->frame.r_min + old_m.r) * coeff - old_m.r * out;
+	data->frame.i_min = (data->frame.i_min + old_m.i) * coeff - old_m.i * out;
+	data->frame.r_max = (data->frame.r_max + old_m.r) * coeff - old_m.r * out;
+	data->frame.i_max = (data->frame.i_max + old_m.i) * coeff - old_m.i * out;
+	printf("frame (coeff = %.3lf): min = %.3lf + %.3lfi, max = %.3lf + %.3lfi\n",
+		coeff,
+		data->frame.r_min, data->frame.i_min,
+		data->frame.r_max, data->frame.i_max);
 	data->zoom *= coeff;
 }
 
-int				mouse(int button, int x, int y, void *d)
+int	mouse(int button, int x, int y, void *d)
 {
 	t_data	*data;
 	FLOAT	coeff;
@@ -53,8 +61,6 @@ static void		arrows(t_data *data, int dx, int dy)
 {
 	FLOAT	d;
 
-	printf("YO MEC, DX = %d, DY = %d\n", dx, dy);
-
 	if (dx)
 	{
 		d = dx * MOVE_INC * data->zoom;
@@ -70,12 +76,17 @@ static void		arrows(t_data *data, int dx, int dy)
 	fractol(data);
 }
 
-int				key_press(int kc, void *d)
+int	key_press(int kc, void *d)
 {
 	t_data	*data;
 
 	data = (t_data *)d;
-	if (kc == UP)
+	if (kc == X)
+	{
+		init_frame(&data->frame);
+		fractol(data);
+	}
+	else if (kc == UP)
 		arrows(data, 0, -1);
 	else if (kc == DOWN)
 		arrows(data, 0, 1);

@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 02:16:35 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/20 23:57:46 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/21 17:42:04 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # include <stdio.h>
 
 t_data					*init(int w, int h);
+void					init_frame(t_frame *frame);
+
 void					fractol(t_data *data);
 int						fractol_hook(void *data);
 

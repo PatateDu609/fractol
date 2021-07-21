@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 10:53:23 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 04:01:01 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/21 17:41:17 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define LEFT			65361
 # define SCROLL_DOWN	5
 # define SCROLL_UP		4
+# define X				120
 
 int		mouse(int button, int x, int y, void *d);
 int		quit(void *d);

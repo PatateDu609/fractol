@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 02:20:15 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 04:08:05 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/21 17:52:58 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_data	t_data;
 #  define FLOOR			floor
 # endif
 
-# define ZOOM_FACTOR	1.5
-# define MOVE_INC		0.5
+# define ZOOM_FACTOR	1.25
+# define MOVE_INC		0.75
 
 t_pixel			rgb(uint8_t r, uint8_t g, uint8_t b);
 void			push_image(t_data *data);
