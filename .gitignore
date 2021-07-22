@@ -1,3 +1,4 @@
 objs
 fractol
 .vscode
+**/*.o
