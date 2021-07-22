@@ -6,18 +6,21 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 02:40:10 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 02:02:28 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 06:16:39 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-#include <inttypes.h>
+# include <inttypes.h>
 
-# ifndef FLOAT
-#  define FLOAT float
-# endif
+typedef enum e_fractal
+{
+	MANDELBROT,
+	JULIA,
+	BURNING_SHIP
+}						t_fractal;
 
 typedef union u_pixel
 {
@@ -32,10 +35,10 @@ typedef union u_pixel
 
 typedef struct s_frame
 {
-	FLOAT				r_min;
-	FLOAT				r_max;
-	FLOAT				i_min;
-	FLOAT				i_max;
+	double				r_min;
+	double				r_max;
+	double				i_min;
+	double				i_max;
 	uint16_t			w;
 	uint16_t			h;
 }						t_frame;
@@ -49,7 +52,7 @@ typedef struct s_complex
 typedef struct s_gradient
 {
 	int					pts;
-	FLOAT				*points;
+	double				*points;
 	t_pixel				*colors;
 
 	int					size;
@@ -66,9 +69,11 @@ typedef struct s_data
 
 	t_frame				frame;
 	int					max_it;
+	t_fractal			set;
+	t_complex			julia_c;
 	t_gradient			g;
 
-	FLOAT				zoom;
+	double				zoom;
 }						t_data;
 
 #endif

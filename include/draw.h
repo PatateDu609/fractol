@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 02:20:15 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 17:52:58 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 03:12:53 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,6 @@
 # include "structs.h"
 
 typedef struct s_data	t_data;
-
-# if FLOAT == float
-#  define LOG2			log2f
-#  define SQRT			sqrtf
-#  define FLOOR			floorf
-# else
-#  define LOG2			log2
-#  define SQRT			sqrt
-#  define FLOOR			floor
-# endif
 
 # define ZOOM_FACTOR	1.25
 # define MOVE_INC		0.75

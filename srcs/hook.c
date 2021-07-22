@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 10:42:18 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 21:59:36 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 03:31:08 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	quit(void *d)
 	exit(0);
 }
 
-static void	scroll(t_data *data, FLOAT coeff, int x, int y)
+static void	scroll(t_data *data, double coeff, int x, int y)
 {
 	t_complex	old_m;
-	FLOAT		old_range;
-	FLOAT		range;
-	FLOAT		ratio_r;
-	FLOAT		ratio_i;
+	double		old_range;
+	double		range;
+	double		ratio_r;
+	double		ratio_i;
 
 	old_m = get_complex(data->frame, x, y);
 	old_range = data->frame.r_max - data->frame.r_min;
@@ -41,11 +41,11 @@ static void	scroll(t_data *data, FLOAT coeff, int x, int y)
 int	mouse(int button, int x, int y, void *d)
 {
 	t_data	*data;
-	FLOAT	coeff;
+	double	coeff;
 
 	data = (t_data *)d;
 	if (button == SCROLL_DOWN)
-		coeff = (FLOAT)1 / ZOOM_FACTOR;
+		coeff = 1. / ZOOM_FACTOR;
 	else if (button == SCROLL_UP)
 		coeff = ZOOM_FACTOR;
 	else
@@ -55,9 +55,9 @@ int	mouse(int button, int x, int y, void *d)
 	return (0);
 }
 
-static void		arrows(t_data *data, int dx, int dy)
+static void	arrows(t_data *data, int dx, int dy)
 {
-	FLOAT	d;
+	double	d;
 
 	if (dx)
 	{

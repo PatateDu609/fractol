@@ -7,10 +7,8 @@ HEAD_FOLDER	=	include
 MLX_FOLDER	=	minilibx-linux
 MLX_LIB		=	$(MLX_FOLDER)/mlx.a
 
-FLOATING	=	double
-
 CC			:=	gcc
-CFLAGS		:=	-Werror -Wextra -Wall -fsanitize=address -g -I$(HEAD_FOLDER) -I$(MLX_FOLDER) -DFLOAT=$(FLOATING)
+CFLAGS		:=	-Werror -Wextra -Wall -fsanitize=address -g -I$(HEAD_FOLDER) -I$(MLX_FOLDER)
 LDFLAGS		:=	-fsanitize=address -g -fsanitize=leak -L$(MLX_FOLDER) -lmlx -lXext -lX11 -lm
 
 SRCS_BASE	=	main			\
@@ -19,8 +17,11 @@ SRCS_BASE	=	main			\
 				hook			\
 				free			\
 				utils			\
+				check			\
+				parse			\
+				error			\
 				fractol			\
-				allocation		\
+				chk_set			\
 
 SRCS		=	$(addsuffix .c, $(addprefix $(SRCS_FOLDER)/, $(SRCS_BASE)))
 OBJS		=	$(addsuffix .o, $(addprefix $(OBJS_FOLDER)/, $(SRCS_BASE)))

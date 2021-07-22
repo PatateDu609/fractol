@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 02:42:09 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/21 22:03:41 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 06:14:04 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_complex	get_complex(t_frame frame, uint16_t x, uint16_t y)
 {
 	t_complex	z;
-	FLOAT		range;
+	double		range;
 
 	range = frame.r_max - frame.r_min;
 	z.r = x * (range / frame.w) + frame.r_min;
@@ -24,43 +24,44 @@ t_complex	get_complex(t_frame frame, uint16_t x, uint16_t y)
 	return (z);
 }
 
-static FLOAT cubic_interpolation(FLOAT p[4], FLOAT x)
+t_complex	make_complex(double r, double i)
 {
-	return (p[1] +
-			0.5 * x * (p[2] - p[0] +
-			x * (2.0 * p[0] - 5.0 * p[1] + 4.0 * p[2] - p[3] +
-			x * (3.0 * (p[1] - p[2]) + p[3] - p[0]))));
+	t_complex	z;
+
+	z.r = r;
+	z.i = i;
+	return (z);
 }
 
-static t_pixel	interpolate_color(FLOAT t, t_pixel min, t_pixel max)
+static t_pixel	interpolate_color(double t, t_pixel min, t_pixel max)
 {
 	t_pixel		p;
 
-	p.r = FLOOR(min.r + (max.r - min.r) * t);
-	p.g = FLOOR(min.g + (max.g - min.g) * t);
-	p.b = FLOOR(min.b + (max.b - min.b) * t);
-	p.a = FLOOR(min.a + (max.a - min.a) * t);
-	return p;
+	p.r = floor(min.r + (max.r - min.r) * t);
+	p.g = floor(min.g + (max.g - min.g) * t);
+	p.b = floor(min.b + (max.b - min.b) * t);
+	p.a = floor(min.a + (max.a - min.a) * t);
+	return (p);
 }
 
-void			compute_gradient(t_gradient *g)
+void	compute_gradient(t_gradient *g)
 {
 	int		i;
-	FLOAT	f;
+	double	f;
 	int		j;
 
 	i = 0;
 	while (i < g->size)
 	{
-		f = (FLOAT)i / g->size;
+		f = (double)i / g->size;
 		j = 0;
 		while (j < g->pts)
 		{
 			if (f < g->points[j])
 			{
 				g->comp[i] = interpolate_color(f, g->colors[j - 1],
-					g->colors[j]);
-				break;
+						g->colors[j]);
+				break ;
 			}
 			j++;
 			if (j == g->pts)
@@ -68,4 +69,14 @@ void			compute_gradient(t_gradient *g)
 		}
 		i++;
 	}
+}
+
+void	usage(void)
+{
+	printf("Usage: ./fractol set max_it [c]\n");
+	printf("\ttype: julia, mandelbrot or burning_sheep\n");
+	printf("\tmax_it: an integer\n");
+	printf("\tc (only if set == julia):"
+			" complex number in the form 'x + yi'.\n");
+	printf("\tExample: ./fractol julia '0.1221 + 0.212i'\n");
 }
