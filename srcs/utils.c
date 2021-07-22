@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 02:42:09 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:14:04 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 06:33:14 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void	usage(void)
 	printf("\ttype: julia, mandelbrot or burning_sheep\n");
 	printf("\tmax_it: an integer\n");
 	printf("\tc (only if set == julia):"
-			" complex number in the form 'x + yi'.\n");
+		" complex number in the form 'x + yi'.\n");
 	printf("\tExample: ./fractol julia '0.1221 + 0.212i'\n");
 }

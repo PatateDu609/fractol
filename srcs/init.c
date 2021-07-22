@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 03:03:33 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:29:29 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 06:34:07 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ static void	init_mlx(t_data *data)
 	data->mlx_img = chk_non_null(mlx_new_image(data->mlx, data->frame.w,
 				data->frame.h), MLX_IMG_FAILED);
 	data->image = (t_pixel *)mlx_get_data_addr(data->mlx_img, &tmp, &tmp, &tmp);
-}
-
-static void	init_hook(t_data *data)
-{
 	mlx_hook(data->win, 33, 1L << 17, quit, data);
 	mlx_hook(data->win, 4, 1L << 2, mouse, data);
 	mlx_hook(data->win, 2, 1L << 0, key_press, data);
@@ -90,7 +86,6 @@ t_data	*init(int ac, char **av, int w, int h)
 	data->zoom = 1;
 	init_params(data, ac, av);
 	init_mlx(data);
-	init_hook(data);
 	init_frame(&data->frame);
 	init_gradient(&data->g);
 	return (data);

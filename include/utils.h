@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 03:09:23 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:23:28 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 06:35:10 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ int			ft_atoi(char *arg);
 double		parse_real(char **arg);
 t_complex	parse_complex(char *arg);
 char		*ft_tolower(char *s);
-
 
 #endif
