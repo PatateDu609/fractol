@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 06:05:17 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:24:02 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 12:57:48 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	chk_julia(t_data *data, int ac, char **av)
 	return (1);
 }
 
-int	chk_burning_sheep(t_data *data, int ac, char **av)
+int	chk_burning_ship(t_data *data, int ac, char **av)
 {
-	if (ft_strcmp(ft_tolower(av[1]), "burning_sheep") || ac != 3)
+	if (ft_strcmp(ft_tolower(av[1]), "burning_ship") || ac != 3)
 		return (0);
 	data->set = BURNING_SHIP;
 	return (1);

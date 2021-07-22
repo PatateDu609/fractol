@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 03:03:33 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:34:07 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 12:57:48 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	init_params(t_data *data, int ac, char **av)
 		free(data);
 		exit(1);
 	}
-	if (!chk_julia(data, ac, av) && !chk_burning_sheep(data, ac, av)
+	if (!chk_julia(data, ac, av) && !chk_burning_ship(data, ac, av)
 		&& !chk_mandelbrot(data, ac, av))
 	{
 		usage();

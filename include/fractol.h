@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 02:16:35 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:19:43 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 12:57:48 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_data					*init(int ac, char **av, int w, int h);
 void					init_frame(t_frame *frame);
 
 int						chk_julia(t_data *data, int ac, char **av);
-int						chk_burning_sheep(t_data *data, int ac, char **av);
+int						chk_burning_ship(t_data *data, int ac, char **av);
 int						chk_mandelbrot(t_data *data, int ac, char **av);
 
 void					fractol(t_data *data);
