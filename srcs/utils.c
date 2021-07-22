@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 02:42:09 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:33:14 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 12:57:09 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	compute_gradient(t_gradient *g)
 void	usage(void)
 {
 	printf("Usage: ./fractol set max_it [c]\n");
-	printf("\ttype: julia, mandelbrot or burning_sheep\n");
+	printf("\ttype: julia, mandelbrot or burning_ship\n");
 	printf("\tmax_it: an integer\n");
 	printf("\tc (only if set == julia):"
 		" complex number in the form 'x + yi'.\n");
