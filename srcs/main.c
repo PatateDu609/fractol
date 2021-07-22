@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 22:03:44 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 04:37:19 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 06:39:58 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int ac, char **av)
 	int		w;
 	int		h;
 
-	w = 500;
-	h = 500;
+	w = 750;
+	h = 750;
 	data = init(ac, av, w, h);
 	fractol(data);
 	mlx_loop(data->mlx);

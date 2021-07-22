@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 10:42:18 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 03:31:08 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 06:41:06 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	mouse(int button, int x, int y, void *d)
 	double	coeff;
 
 	data = (t_data *)d;
-	if (button == SCROLL_DOWN)
+	if (button == SCROLL_OUT)
 		coeff = 1. / ZOOM_FACTOR;
-	else if (button == SCROLL_UP)
+	else if (button == SCROLL_IN)
 		coeff = ZOOM_FACTOR;
 	else
 		return (0);
