@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 10:42:18 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:41:06 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 14:08:29 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	quit(void *d)
 	exit(0);
 }
 
-static void	scroll(t_data *data, double coeff, int x, int y)
+void	scroll(t_data *data, double coeff, int x, int y)
 {
 	t_complex	old_m;
 	double		old_range;
@@ -36,6 +36,7 @@ static void	scroll(t_data *data, double coeff, int x, int y)
 	data->frame.r_max = data->frame.r_min + range;
 	data->frame.i_max = data->frame.i_min + range;
 	data->zoom *= coeff;
+	mlx_do_key_autorepeatoff(data->mlx);
 }
 
 int	mouse(int button, int x, int y, void *d)
@@ -55,7 +56,7 @@ int	mouse(int button, int x, int y, void *d)
 	return (0);
 }
 
-static void	arrows(t_data *data, int dx, int dy)
+void	arrows(t_data *data, int dx, int dy)
 {
 	double	d;
 
@@ -79,19 +80,24 @@ int	key_press(int kc, void *d)
 	t_data	*data;
 
 	data = (t_data *)d;
+	data->max_it /= 2;
+	if (kc == F)
+		data->autozoom = 1;
+	if (kc == SHIFT)
+		data->shift = 1;
+	if (kc == UP)
+		data->dy = -1;
+	if (kc == DOWN)
+		data->dy = 1;
+	if (kc == LEFT)
+		data->dx = -1;
+	if (kc == RIGHT)
+		data->dx = 1;
 	if (kc == X)
 	{
 		init_frame(&data->frame);
 		fractol(data);
 	}
-	else if (kc == UP)
-		arrows(data, 0, -1);
-	else if (kc == DOWN)
-		arrows(data, 0, 1);
-	else if (kc == LEFT)
-		arrows(data, -1, 0);
-	else if (kc == RIGHT)
-		arrows(data, 1, 0);
 	else if (kc == ESC)
 		mlx_loop_end(data->mlx);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 02:40:10 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:16:39 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 13:55:58 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ typedef struct s_data
 	t_gradient			g;
 
 	double				zoom;
+	int					autozoom;
+	int					shift;
+	int					dx;
+	int					dy;
 }						t_data;
 
 #endif

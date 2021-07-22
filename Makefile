@@ -22,6 +22,7 @@ SRCS_BASE	=	main			\
 				error			\
 				fractol			\
 				chk_set			\
+				release			\
 
 SRCS		=	$(addsuffix .c, $(addprefix $(SRCS_FOLDER)/, $(SRCS_BASE)))
 OBJS		=	$(addsuffix .o, $(addprefix $(OBJS_FOLDER)/, $(SRCS_BASE)))

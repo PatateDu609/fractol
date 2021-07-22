@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 03:03:33 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 12:57:48 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 13:59:11 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	init_mlx(t_data *data)
 	mlx_hook(data->win, 33, 1L << 17, quit, data);
 	mlx_hook(data->win, 4, 1L << 2, mouse, data);
 	mlx_hook(data->win, 2, 1L << 0, key_press, data);
+	mlx_hook(data->win, 3, 1L << 1, key_release, data);
 	mlx_loop_hook(data->mlx, fractol_hook, data);
 }
 
@@ -84,6 +85,10 @@ t_data	*init(int ac, char **av, int w, int h)
 	data->frame.w = w;
 	data->frame.h = h;
 	data->zoom = 1;
+	data->autozoom = 0;
+	data->shift = 0;
+	data->dx = 0;
+	data->dy = 0;
 	init_params(data, ac, av);
 	init_mlx(data);
 	init_frame(&data->frame);

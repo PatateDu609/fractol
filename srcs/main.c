@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 22:03:44 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 06:39:58 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 14:04:43 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,22 @@
 
 int	fractol_hook(void *d)
 {
-	(void)d;
+	t_data	*data;
+	int		x;
+	int		y;
+
+	data = (t_data *)d;
+	if (data->autozoom)
+	{
+		mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
+		if (data->shift)
+			scroll(data, ZOOM_FACTOR, x, y);
+		else
+			scroll(data, 1. / ZOOM_FACTOR, x, y);
+		fractol(data);
+	}
+	else if (data->dx || data->dy)
+		arrows(data, data->dx, data->dy);
 	return (0);
 }
 
