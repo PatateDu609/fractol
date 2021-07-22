@@ -6,13 +6,13 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 13:31:47 by gboucett          #+#    #+#             */
-/*   Updated: 2021/07/22 14:08:37 by gboucett         ###   ########.fr       */
+/*   Updated: 2021/07/22 14:26:12 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		key_release(int kc, void *d)
+int	key_release(int kc, void *d)
 {
 	t_data	*data;
 
